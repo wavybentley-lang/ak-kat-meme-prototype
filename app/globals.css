@@ -1,0 +1,147 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+/*
+  AK-KAT Design System
+  Military camouflage + tactical interface + Robinhood-inspired signal green.
+  Dark-only. ~70% dark backgrounds / 20% camo surfaces / 10% action + character accents.
+*/
+
+@theme inline {
+  /* Brand palette */
+  --color-night: #0b0f0c;
+  --color-charcoal: #141a16;
+  --color-forest: #1d2a21;
+  --color-olive: #394837;
+  --color-moss: #576a4d;
+  --color-signal: #00c853;
+  --color-offwhite: #eae7dd;
+  --color-dust: #c7c1a8;
+  --color-bow: #d96c8b;
+
+  /* Semantic tokens mapped to shadcn primitives */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Fonts (variables injected by next/font in layout.tsx) */
+  --font-sans: var(--font-plex-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+  --font-display: var(--font-teko), var(--font-plex-sans), sans-serif;
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+}
+
+:root {
+  color-scheme: dark;
+
+  --background: #0b0f0c;
+  --foreground: #eae7dd;
+  --card: #141a16;
+  --card-foreground: #eae7dd;
+  --popover: #141a16;
+  --popover-foreground: #eae7dd;
+  --primary: #00c853;
+  --primary-foreground: #06120a;
+  --secondary: #1d2a21;
+  --secondary-foreground: #eae7dd;
+  --muted: #1d2a21;
+  --muted-foreground: #c7c1a8;
+  --accent: #394837;
+  --accent-foreground: #eae7dd;
+  --destructive: #b23b3b;
+  --border: rgba(234, 231, 221, 0.1);
+  --input: rgba(234, 231, 221, 0.14);
+  --ring: #00c853;
+  --radius: 0.25rem;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    @apply bg-background;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection {
+    background: var(--color-signal);
+    color: #06120a;
+  }
+}
+
+@layer utilities {
+  /* Display typography helper */
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  /* Film grain overlay — subtle, perceived subconsciously */
+  .texture-grain {
+    position: relative;
+  }
+  .texture-grain::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.06;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* Faint tactical grid / coordinate marks */
+  .texture-grid {
+    background-image:
+      linear-gradient(to right, rgba(87, 106, 77, 0.08) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(87, 106, 77, 0.08) 1px, transparent 1px);
+    background-size: 44px 44px;
+  }
+
+  /* Refined camouflage: layered irregular olive blooms, low opacity */
+  .texture-camo {
+    background-color: var(--color-night);
+    background-image:
+      radial-gradient(38% 30% at 18% 22%, rgba(57, 72, 55, 0.55) 0%, transparent 60%),
+      radial-gradient(30% 26% at 78% 30%, rgba(29, 42, 33, 0.7) 0%, transparent 62%),
+      radial-gradient(42% 34% at 62% 78%, rgba(57, 72, 55, 0.35) 0%, transparent 60%),
+      radial-gradient(26% 22% at 30% 82%, rgba(87, 106, 77, 0.22) 0%, transparent 60%);
+  }
+
+  .text-shadow-tactical {
+    text-shadow: 0 2px 24px rgba(0, 0, 0, 0.7);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
