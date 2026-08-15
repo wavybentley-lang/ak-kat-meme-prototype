@@ -8,8 +8,9 @@ import { AK_KAT } from '@/lib/ak-config'
 import { cn } from '@/lib/utils'
 
 const NAV_LINKS = [
-  { label: 'THE CAT', href: '#the-cat' },
-  { label: 'LORE', href: '#lore' },
+  { label: 'FOOTAGE', href: '#footage' },
+  { label: 'THE LORE', href: '#the-cat' },
+  { label: 'TOKEN', href: '#token' },
   { label: 'X', href: AK_KAT.xUrl, external: true },
 ]
 

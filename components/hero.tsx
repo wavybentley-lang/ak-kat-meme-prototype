@@ -95,7 +95,7 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="mt-8 flex flex-col items-center gap-3 sm:flex-row"
           >
-            <AkButton as="a" href="#the-cat" variant="outline" size="md">
+            <AkButton as="a" href="#footage" variant="outline" size="md">
               WTF IS THIS?
             </AkButton>
             <AkButton
