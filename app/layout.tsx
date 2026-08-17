@@ -29,18 +29,18 @@ export const metadata: Metadata = {
   description:
     'AK-KAT is the bodyguard of Thinking Cat and Cashcat. Deployed on Robinhood Chain. Yes, the cat is real. Are you still fading?',
   generator: 'v0.app',
-  metadataBase: new URL('https://ak-kat.vercel.app'),
+  metadataBase: new URL('https://ak-kat-meme-prototype.vercel.app/'),
   openGraph: {
     title: 'AK-KAT — The Cat Is Real',
     description: 'The viral tactical cat. Deployed on Robinhood Chain. Are you still fading?',
-    images: ['/ak-kat-hero.png'],
+    images: ['/og/ogimage.jpg'],
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'AK-KAT — The Cat Is Real',
     description: 'The viral tactical cat. Deployed on Robinhood Chain. Are you still fading?',
-    images: ['/ak-kat-hero.png'],
+    images: ['/og/ogimage.jpg'],
   },
 }
 
