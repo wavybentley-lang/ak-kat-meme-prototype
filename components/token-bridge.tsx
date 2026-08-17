@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { ArrowUpRight } from 'lucide-react'
+import { ScrollReveal } from '@/components/scroll-reveal'
 import { SectionLabel } from '@/components/section-label'
 import { AK_KAT } from '@/lib/ak-config'
 import { cn } from '@/lib/utils'
@@ -32,7 +33,7 @@ export function TokenBridge() {
 
   return (
     <section id="token" className="relative border-t border-border py-16 md:py-24">
-      <div className="mx-auto max-w-3xl px-5">
+      <ScrollReveal className="mx-auto max-w-3xl px-5" delay={0.12}>
         <div className="relative border border-border bg-charcoal/60 p-6 md:p-10">
           <span className="pointer-events-none absolute left-3 top-3 h-4 w-4 border-l border-t border-signal/60" />
           <span className="pointer-events-none absolute right-3 top-3 h-4 w-4 border-r border-t border-signal/60" />
@@ -95,7 +96,7 @@ export function TokenBridge() {
             </a>
           </div>
         </div>
-      </div>
+      </ScrollReveal>
     </section>
   )
 }

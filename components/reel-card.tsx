@@ -21,11 +21,13 @@ export function ReelCard({
   active,
   dimmed,
   onActivate,
+  onPin,
 }: {
   reel: Reel
   active: boolean
   dimmed: boolean
   onActivate: () => void
+  onPin: () => void
 }) {
   const videoRef = useRef<HTMLVideoElement>(null)
   const wrapRef = useRef<HTMLDivElement>(null)
@@ -44,11 +46,11 @@ export function ReelCard({
     return () => io.disconnect()
   }, [])
 
-  // Play only when visible AND (on desktop) the dominant reel.
+  // Play only when visible and explicitly hovered or pinned.
   useEffect(() => {
     const v = videoRef.current
     if (!v || !reel.src) return
-    const shouldPlay = inView && (active || dimmed === false)
+    const shouldPlay = inView && active
     if (shouldPlay) {
       v.play().catch(() => {})
     } else {
@@ -71,7 +73,10 @@ export function ReelCard({
       type="button"
       onMouseEnter={onActivate}
       onFocus={onActivate}
-      onClick={reel.src ? toggleSound : onActivate}
+      onClick={reel.src ? () => {
+        onPin()
+        toggleSound()
+      } : onActivate}
       className={cn(
         'group relative block aspect-[9/16] w-full overflow-hidden border border-border bg-charcoal text-left transition-all duration-500',
         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal focus-visible:ring-offset-2 focus-visible:ring-offset-background',

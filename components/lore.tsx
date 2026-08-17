@@ -3,6 +3,7 @@
 import { useRef } from 'react'
 import Image from 'next/image'
 import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react'
+import { ScrollReveal } from '@/components/scroll-reveal'
 import { SectionLabel } from '@/components/section-label'
 import { cn } from '@/lib/utils'
 
@@ -60,7 +61,7 @@ export function Lore() {
       id="the-cat"
       className="relative border-t border-border py-20 md:py-32"
     >
-      <div className="mx-auto max-w-6xl px-5">
+      <ScrollReveal className="mx-auto max-w-6xl px-5" delay={0.14}>
         <header className="mx-auto max-w-3xl text-center">
           <SectionLabel accent="bow" className="justify-center">
             SECTION 03 // THE LORE
@@ -120,7 +121,7 @@ export function Lore() {
           <p className="text-offwhite">Cashcat handles the bag.</p>
           <p className="mt-2 text-signal">AK-KAT handles security.</p>
         </div>
-      </div>
+      </ScrollReveal>
     </section>
   )
 }

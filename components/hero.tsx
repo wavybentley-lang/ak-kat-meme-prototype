@@ -27,10 +27,10 @@ export function Hero() {
       ref={ref}
       className="relative flex min-h-[100svh] flex-col items-center justify-end overflow-hidden bg-night"
     >
-      <CamoBackground contours grid />
+      <CamoBackground contours grid className="z-0" />
 
       {/* AK-KAT character */}
-      <motion.div style={{ y: imgY, scale: imgScale }} className="absolute inset-0">
+      <motion.div style={{ y: imgY, scale: imgScale }} className="absolute inset-0 z-10">
         <Image
           src="/ak-kat-hero.png"
           alt="AK-KAT, a tactical cat in military gear with a pink bow, holding a rifle"
@@ -44,17 +44,17 @@ export function Hero() {
       {/* Readability gradient */}
       <div
         aria-hidden
-        className="absolute inset-0 bg-gradient-to-t from-night via-night/50 to-night/70"
+        className="absolute inset-0 z-20 bg-gradient-to-t from-night via-night/50 to-night/70"
       />
       <div
         aria-hidden
-        className="absolute inset-0 bg-[radial-gradient(60%_50%_at_50%_120%,rgba(0,200,83,0.18),transparent_70%)]"
+        className="absolute inset-0 z-20 bg-[radial-gradient(60%_50%_at_50%_120%,rgba(0,200,83,0.18),transparent_70%)]"
       />
 
       {/* Content */}
       <motion.div
         style={{ y: contentY, opacity: contentOpacity }}
-        className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-16 pt-28 md:px-8 md:pb-24"
+        className="relative z-30 mx-auto w-full max-w-7xl px-4 pb-16 pt-28 md:px-8 md:pb-24"
       >
         <div className="flex flex-col items-center text-center">
           <motion.div
@@ -86,7 +86,7 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.28 }}
             className="mt-2 max-w-md text-pretty font-sans text-base text-dust md:text-lg"
           >
-            The viral cat with a rifle. Bodyguard by trade. Meme by nature.
+            Armed and Viral
           </motion.p>
 
           <motion.div

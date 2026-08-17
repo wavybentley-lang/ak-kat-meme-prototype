@@ -1,9 +1,13 @@
 import { AK_KAT } from '@/lib/ak-config'
+import { ScrollReveal } from '@/components/scroll-reveal'
 
 export function SiteFooter() {
   return (
     <footer className="border-t border-border py-8">
-      <div className="mx-auto flex max-w-6xl flex-col items-center gap-4 px-5 text-center md:flex-row md:justify-between md:text-left">
+      <ScrollReveal
+        className="mx-auto flex max-w-6xl flex-col items-center gap-4 px-5 text-center md:flex-row md:justify-between md:text-left"
+        delay={0.1}
+      >
         <span className="font-display text-xl uppercase tracking-wide text-offwhite">
           AK-KAT
         </span>
@@ -26,7 +30,7 @@ export function SiteFooter() {
           </a>
           <span className="text-muted-foreground/70">{AK_KAT.network}</span>
         </nav>
-      </div>
+      </ScrollReveal>
     </footer>
   )
 }

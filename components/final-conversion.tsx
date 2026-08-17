@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import { AkButton } from '@/components/ak-button'
+import { ScrollReveal } from '@/components/scroll-reveal'
 import { SectionLabel } from '@/components/section-label'
 import { AK_KAT } from '@/lib/ak-config'
 
@@ -25,7 +26,7 @@ export function FinalConversion() {
         <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/60" />
       </div>
 
-      <div className="relative mx-auto w-full max-w-5xl px-5 py-24">
+      <ScrollReveal className="relative mx-auto w-full max-w-5xl px-5 py-24" delay={0.16}>
         <SectionLabel accent="signal">SECTION 04 // FINAL ORDERS</SectionLabel>
 
         <h2 className="mt-4 max-w-3xl text-balance font-display text-6xl uppercase leading-[0.85] text-offwhite md:text-9xl">
@@ -58,7 +59,7 @@ export function FinalConversion() {
             JUST HERE FOR THE MEMES → X
           </a>
         </div>
-      </div>
+      </ScrollReveal>
     </section>
   )
 }

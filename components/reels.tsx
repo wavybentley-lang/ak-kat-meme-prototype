@@ -1,24 +1,26 @@
 'use client'
 
 import { useState } from 'react'
+import { ScrollReveal } from '@/components/scroll-reveal'
 import { SectionLabel } from '@/components/section-label'
 import { ReelCard, type Reel } from '@/components/reel-card'
 
 // Drop real source files into /public/reels and set `src`/`poster` here.
 const REELS: Reel[] = [
-  { id: 'r1', index: '001', caption: 'Perimeter secured', src: undefined },
-  { id: 'r2', index: '002', caption: 'No sudden moves', src: undefined },
-  { id: 'r3', index: '003', caption: 'Threat neutralized', src: undefined },
-  { id: 'r4', index: '004', caption: 'Still fading?', src: undefined },
+  { id: 'r1', index: '001', caption: 'Perimeter secured', src: '/reels/akcat-clip1.mp4' },
+  { id: 'r2', index: '002', caption: 'No sudden moves', src: '/reels/akcat-clip2.mp4' },
+  { id: 'r3', index: '003', caption: 'Threat neutralized', src: '/reels/akcat-clip3.mp4' },
+  { id: 'r4', index: '004', caption: 'Still fading?', src: '/reels/akcat-clip4.mp4' },
 ]
 
 export function Reels() {
-  // -1 = none dominant (all play muted on mobile); >=0 = that index is dominant.
-  const [active, setActive] = useState<number>(-1)
+  const [hovered, setHovered] = useState<number>(-1)
+  const [pinned, setPinned] = useState<number>(-1)
+  const active = hovered !== -1 ? hovered : pinned
 
   return (
     <section id="footage" className="relative border-t border-border py-20 md:py-28">
-      <div className="mx-auto max-w-6xl px-5">
+      <ScrollReveal className="mx-auto max-w-6xl px-5" delay={0.08}>
         <header className="mb-10 flex flex-col gap-4 md:mb-14 md:flex-row md:items-end md:justify-between">
           <div>
             <SectionLabel accent="signal">RECOVERED FOOTAGE / ARCHIVE</SectionLabel>
@@ -34,7 +36,7 @@ export function Reels() {
 
         <div
           className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4"
-          onMouseLeave={() => setActive(-1)}
+          onMouseLeave={() => setHovered(-1)}
         >
           {REELS.map((reel, i) => (
             <ReelCard
@@ -42,11 +44,12 @@ export function Reels() {
               reel={reel}
               active={active === i}
               dimmed={active !== -1 && active !== i}
-              onActivate={() => setActive(i)}
+              onActivate={() => setHovered(i)}
+              onPin={() => setPinned(i)}
             />
           ))}
         </div>
-      </div>
+      </ScrollReveal>
     </section>
   )
 }
